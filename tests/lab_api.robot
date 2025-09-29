@@ -9,10 +9,10 @@ Suite Setup    Init Session
 *** Variables ***
 ${DEFAULT_BASE_URL}    http://localhost:5000
 
+
 *** Keywords ***
 Init Session
-    ${env_base}=    Get Environment Variable    BASE_URL
-    ${base}=        Set Variable If    '${env_base}'!=''    ${env_base}    ${DEFAULT_BASE_URL}
+    ${base}=    Get Environment Variable    BASE_URL    ${DEFAULT_BASE_URL}
     Log    Using BASE_URL: ${base}
     Create Session    prime    ${base}
 
