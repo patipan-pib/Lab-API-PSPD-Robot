@@ -36,11 +36,11 @@ Test Prime Number Endpoint
     Should Be True    ${data['is_prime']}
 
 # ---------- /is_prime/<n> ----------
-Test Prime Number Endpoint 2 
-    ${resp}=    Get On Session    prime    /is_prime/15
-    Should Be Equal As Integers    ${resp.status_code}    200
-    ${data}=    Set Variable    ${resp.json()}
-    Should Be True    ${data['is_prime']}
+# Test Prime Number Endpoint 2 
+#     ${resp}=    Get On Session    prime    /is_prime/15
+#     Should Be Equal As Integers    ${resp.status_code}    200
+#     ${data}=    Set Variable    ${resp.json()}
+#     Should Be True    ${data['is_prime']}
 
 # # ---------- /primes?start=10&end=20 ----------
 # Test Prime Range Endpoint
