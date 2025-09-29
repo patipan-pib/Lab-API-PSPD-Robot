@@ -1,7 +1,24 @@
 # Robot Framework Tests for Prime API
 
+<!-- 10.55.245.207 vm1 -->
+<!-- 10.166.153.241 vm2 -->
+<!-- 10.55.245.176 vm3 -->
+
+
+<!-- 10.55.245.176:5000 -->
+
+<!-- ถ้าต้องการแก้ไข ip add ใน vm1 vm2 vm3 -->
+<!-- sudo nano /etc/hosts -->
+<!-- การออก จาก nano Ctrl + x ->  y -> Enter -->
+
+
 ## Run Locally
 ```bash
+# ติดตั้ง venv
+
+python -m venv venv
+.\venv\Scripts\activate
+
 # ติดตั้ง dependencies
 pip install -r requirements.txt
 
@@ -24,7 +41,6 @@ python -m robot -d reports tests/lab_api.robot
 
 
 # ขั้นตอนการ RUN in VM2 TEST
-
 # 1) เตรียม workspace ส่วนตัว (ไม่พึ่ง /var/lib/jenkins)
 mkdir -p ~/ci && cd ~/ci
 
