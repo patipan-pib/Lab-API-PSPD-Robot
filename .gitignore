@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+*.log
+
+# VSCode
+.vscode/
+
+# Node / Frontend
+node_modules/
+dist/
+reports/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+*.tar
+
+# SQLite / Database
+*.db
+*.sqlite3
