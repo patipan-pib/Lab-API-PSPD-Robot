@@ -29,11 +29,35 @@ Test Welcome Endpoint
     Dictionary Should Contain Key    ${data}    message
 
 # ---------- /is_prime/<n> ----------
-Test Prime Number Endpoint
+Test Prime Number Endpoint 17
     ${resp}=    Get On Session    prime    /is_prime/17
     Should Be Equal As Integers    ${resp.status_code}    200
     ${data}=    Set Variable    ${resp.json()}
     Should Be True    ${data['is_prime']}
+
+Test Prime Number Endpoint 19
+    ${resp}=    Get On Session    prime    /is_prime/19
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${data}=    Set Variable    ${resp.json()}
+    Should Be True    ${data['is_prime']}
+
+Test Prime Number Endpoint 23
+    ${resp}=    Get On Session    prime    /is_prime/23
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${data}=    Set Variable    ${resp.json()}
+    Should Be True    ${data['is_prime']}
+
+Test Prime Number Endpoint 20
+    ${resp}=    Get On Session    prime    /is_prime/20
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${data}=    Set Variable    ${resp.json()}
+    Should Be Equal    ${data['is_prime']}    ${False}
+
+Test Prime Number Endpoint 25
+    ${resp}=    Get On Session    prime    /is_prime/25
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${data}=    Set Variable    ${resp.json()}
+    Should Be Equal    ${data['is_prime']}    ${False}
 
 # ---------- /is_prime/<n> ----------
 # Test Prime Number Endpoint 2 
