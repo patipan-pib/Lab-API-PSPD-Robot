@@ -4,19 +4,20 @@
 
 
 ## Run Locally
-<!-- 
-10.55.245.207 vm1
-10.166.153.241 vm2
-10.55.245.176 vm3
-
-
-10.55.245.176:5000
-
-ถ้าต้องการแก้ไข ip add ใน vm1 vm2 vm3
-sudo nano /etc/hosts
-การออก จาก nano Ctrl + x ->  y -> Enter -->
-
 ```bash
+
+# 10.55.245.207 vm1
+# 10.166.153.241 vm2
+# 10.55.245.176 vm3
+
+
+# 10.55.245.176:5000
+
+# ถ้าต้องการแก้ไข ip add ใน vm1 vm2 vm3
+sudo nano /etc/hosts
+# การออก จาก nano Ctrl + x ->  y -> Enter
+
+
 # ติดตั้ง venv
 
 python -m venv venv
