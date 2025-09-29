@@ -1,13 +1,20 @@
 *** Settings ***
 Library    RequestsLibrary
 Library    Collections
+Library    OperatingSystem
 
-# สร้าง session ครั้งเดียวก่อนรันทดสอบทั้งหมด
-Suite Setup    Create Session    prime    ${BASE_URL}
+# ใช้คีย์เวิร์ด Init Session แทน เพื่อเลือก BASE_URL จาก ENV ถ้ามี
+Suite Setup    Init Session
 
 *** Variables ***
-# แก้ค่าเป็นปลายทางจริงได้ เช่น http://<ip-vm3>:5000
-${BASE_URL}    http://localhost:5000
+${DEFAULT_BASE_URL}    http://localhost:5000
+
+*** Keywords ***
+Init Session
+    ${env_base}=    Get Environment Variable    BASE_URL
+    ${base}=        Set Variable If    '${env_base}'!=''    ${env_base}    ${DEFAULT_BASE_URL}
+    Log    Using BASE_URL: ${base}
+    Create Session    prime    ${base}
 
 *** Test Cases ***
 
