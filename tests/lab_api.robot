@@ -15,6 +15,7 @@ Init Session
     ${base}=    Get Environment Variable    BASE_URL    ${DEFAULT_BASE_URL}
     Log    Using BASE_URL: ${base}
     Create Session    prime    ${base}
+    Create Session    next     ${base}
 
 *** Test Cases ***
 
@@ -28,7 +29,25 @@ Test Welcome Endpoint
     ${data}=    Set Variable    ${resp.json()}
     Dictionary Should Contain Key    ${data}    message
 
-# ---------- /is_prime/<n> ----------
+# ---------- /next5/<n> ----------
+Test Next 5 Endpoint 1
+    ${resp}=    Get On Session    next    /next5/1
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${json}=    Evaluate    $resp.json()
+    Should Be Equal As Numbers    ${json['result']}    6
+
+Test Next 5 Endpoint Neg 10
+    ${resp}=    Get On Session    next    /next5/-10
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${json}=    Evaluate    $resp.json()
+    Should Be Equal As Numbers    ${json['result']}    -5
+
+Test Next 5 Endpoint 1dot5
+    ${resp}=    Get On Session    next    /next5/1.5
+    Should Be Equal As Integers    ${resp.status_code}    200
+    ${json}=    Evaluate    $resp.json()
+    Should Be Equal As Numbers    ${json['result']}    6.5
+
 Test Prime Number Endpoint 17
     ${resp}=    Get On Session    prime    /is_prime/17
     Should Be Equal As Integers    ${resp.status_code}    200
